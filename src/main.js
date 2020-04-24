@@ -9,6 +9,9 @@ import 'lib-flexible/flexible.js';
 import './assets/css/style.css'
 Vue.config.productionTip = false
 
+import http from './http'
+Vue.prototype.$http = http
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

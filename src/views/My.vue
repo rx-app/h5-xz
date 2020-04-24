@@ -7,13 +7,13 @@
           <img src alt />
         </div>
         <div class="name">
-          <span>用户名</span>
+          <span>{{info.nickname}}</span>
         </div>
         <div class="level">
-          <span class="level-4">包年会员</span>
-          <span class="level-3">包月会员</span>
-          <span class="level-2">普通会员</span>
-          <span class="level-1">普通用户</span>
+          <span v-if="info.level==3" class="level-4">包年会员</span>
+          <span v-if="info.level==2" class="level-3">包月会员</span>
+          <span v-if="info.level==1" class="level-2">普通会员</span>
+          <span v-if="info.level==0" class="level-1">普通用户</span>
         </div>
       </div>
       <div class="list">
@@ -38,12 +38,26 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 export default {
   data() {
-    return {};
+    return {
+      info:{}
+    };
   },
   components: {
     Header,
     Footer
-  }
+  },
+  mounted(){
+    this.getUserInfo();
+  },
+  methods:{
+    getUserInfo(){
+      let info = localStorage.getItem('info')
+      info = JSON.parse(info)
+      this.info = info
+      console.log(this.info)
+      // 这里可能需要判断info是否info是否存在
+    },
+  },
 };
 </script>
 

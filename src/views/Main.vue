@@ -3,14 +3,15 @@
     <Header></Header>
     <div class="main">
       <div class="rotate-section">
+        <div class="text-box"></div>
         <div class="rotate-img">
 
         </div>
       </div>
       <div class="star-cards">
-        <div class="card-item">
+        <div v-for="(item,index) in cards" :key="index" class="card-item">
           <div class="card-icon">
-            <img src="../assets/img/icon-star.png" alt="">
+            <img :src="item.icon" alt="">
           </div>
           <div class="card-des">
             <div class="star-name">SUN</div>
@@ -62,13 +63,32 @@ import Footer  from "../components/Footer";
 export default {
   data () {
     return {
-      
+      pageIndex:1,
+      pageSize:100,
+      cards:[],
     }
+  },
+  methods:{
+    async fetch() {
+      const res = await this.$http.get("card/page",{params:{page_index:this.pageIndex,page_size:this.pageSize}});
+      console.log(res.data)
+      if(res.code==200){
+        this.cards=res.data.result
+      }
+      
+    },
+    async getUserInfo(){
+      let res = await this.$http.get("auth/info");
+    }
+  },
+  mounted(){
+    this.fetch();
+    // this.getUserInfo();
   },
   components:{
     Header,
     Footer,
-  }
+  },
 }
 </script>
 
@@ -81,14 +101,33 @@ export default {
 .rotate-section{
   height: 545px;
   padding: 40px 0;
+  position: relative;
   // background: #270E3B;
+  .text-box{
+    position: absolute;
+    top: 134px;
+    left: 106px;
+    width: 520px;
+    height: 244px;
+    background: url('../assets/img/main-title.png') no-repeat;
+    background-size: contain;
+  }
   .rotate-img{
-    margin-left: calc(50vw - 232.5px);
+    position: absolute;
+    top: 40px;
+    left: 142px;
     width: 465px;
     height: 465px;
-    background: cornflowerblue;
+    background: url('../assets/img/xinpan.png') no-repeat;
+    background-size: contain;
+    animation:circle 24s infinite linear;
+  }
+  @keyframes circle{
+    0% { transform:rotate(0deg); }
+    100% { transform:rotate(-360deg); }
   }
 }
+
 .star-cards{
   padding: 0 30px;
   height: calc(100vh - 84px - 110px - 545px);

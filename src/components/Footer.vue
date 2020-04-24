@@ -1,17 +1,17 @@
 <template>
   <div class="xz-footer">
-    <div class="icon ">
-      <i class="icon-index"></i>
+    <router-link tag="div" :to="{name:'main'}" exact class="icon ">
+      <i class="icon-main"></i>
       <div class="txt">每日运势</div>
-    </div>
-    <div class="icon ">
+    </router-link>
+    <router-link tag="div" :to="{name:'message'}"  class="icon ">
       <i class="icon-release"></i>
       <div class="txt">塔罗屋</div>
-    </div>
-    <div class="icon ">
+    </router-link>
+    <router-link :to="{name:'my'}" tag="div" class="icon ">
       <i class="icon-my"></i>
       <div class="txt">我的</div>
-    </div>
+    </router-link>
   </div>
 </template>
 
@@ -38,7 +38,6 @@ export default {
   z-index: 10;
   .icon{
     flex:1;
-    
     text-align: center;
     .txt{font-size:20px;color:#CA92FB;line-height: 28px;}
     i{
@@ -46,9 +45,16 @@ export default {
       width: 54px;
       height: 54px;
     }
-    .icon-index {background: url('../assets/img/icon-index.png') no-repeat;background-size: contain;}
+    .icon-main {background: url('../assets/img/icon-main.png') no-repeat;background-size: contain;}
     .icon-release {background: url('../assets/img/icon-release.png') no-repeat;background-size: contain;}
     .icon-my {background: url('../assets/img/icon-my.png') no-repeat;background-size: contain;}
+    &.on{
+      .icon-main {background: url('../assets/img/icon-main-on.png') no-repeat;background-size: contain;}
+      .icon-release {background: url('../assets/img/icon-release-on.png') no-repeat;background-size: contain;}
+      .icon-my {background: url('../assets/img/icon-my-on.png') no-repeat;background-size: contain;}
+    }
+
+    
   }
   
 }

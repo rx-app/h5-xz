@@ -35,6 +35,14 @@ export default new Router({
       path: '/message',
       name: 'message',
       component: resolve => require(['@/views/Message'], resolve)
-    }
-  ]
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: resolve => require(['@/views/Login'], resolve)
+    },
+  ],
+  linkActiveClass: 'on',
 })
+
+
