@@ -41,6 +41,11 @@ export default new Router({
       name: 'login',
       component: resolve => require(['@/views/Login'], resolve)
     },
+    {
+      path: '/register',
+      name: 'register',
+      component: resolve => require(['@/views/Register'], resolve)
+    },
   ],
   linkActiveClass: 'on',
 })
