@@ -9,7 +9,7 @@
         </div>
       </div>
       <div class="star-cards">
-        <div v-for="(item,index) in cards" :key="index" class="card-item">
+        <div v-for="(item,index) in cards" :key="index" :class="{on:activeIndex==index}" @click="activeIndex=index" class="card-item">
           <div class="card-icon">
             <img :src="item.icon" alt="">
           </div>
@@ -23,7 +23,7 @@
             <div class="button-txt">做测试</div>
           </div>
         </div>
-        <div class="card-item on">
+        <!-- <div class="card-item on">
           <div class="card-icon">
             <img src="../assets/img/icon-star.png" alt="">
           </div>
@@ -50,7 +50,7 @@
             <div class="button-icon"></div>
             <div class="button-txt">做测试</div>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
     <Footer></Footer>
@@ -66,6 +66,7 @@ export default {
       pageIndex:1,
       pageSize:100,
       cards:[],
+      activeIndex:null,
     }
   },
   methods:{
@@ -96,7 +97,7 @@ export default {
 .main{
   background: #270E3B;
   
-  
+  background: url('../assets/img/BG.jpg') no-repeat;
 }
 .rotate-section{
   height: 545px;

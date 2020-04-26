@@ -24,16 +24,16 @@ http.interceptors.response.use(res => {
 }, err => {
   // console.log(err)
   if (err.response.data.code == '401') {
-    Vue.prototype.$alert('身份信息无效或已过期，请重新登录', {
-      confirmButtonText: '确定',
-      callback: action => {
+    // Vue.prototype.$alert('身份信息无效或已过期，请重新登录', {
+    //   confirmButtonText: '确定',
+    //   callback: action => {
         router.push('/login')
         // Vue.prototype.$message({
         //   type: 'error',
         //   message: '身份信息无效或已过期，请重新登录'
         // });
-      }
-    });
+    //   }
+    // });
     // Vue.prototype.$message({
     //   type: 'error',
     //   message: '身份信息过期或无效，请重新登录'

@@ -4,7 +4,7 @@
     <div class="main">
       <div class="top"></div>
       <div class="msg-box">
-        <input type="text"><span>确认</span>
+        <input class="msg-text" type="text" v-model="content" placeholder="请诚心输入你的留言"><span @click="sendMsg">确认</span>
       </div>
     </div>
     <Footer></Footer>
@@ -16,12 +16,37 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 export default {
   data() {
-    return {};
+    return {
+      pageIndex:1,
+      pageSize:100,
+      content:''
+    };
   },
   components: {
     Header,
     Footer
-  }
+  },
+  mounted(){
+    this.getMsgList();
+  },
+  methods:{
+    async sendMsg(){
+        const res = await this.$http.post("message/create",{content:this.content});
+        console.log(res.data)
+        if(res.code==200){
+          this.content=''
+          // this.cards=res.data.result
+        }
+    },
+    async getMsgList(){
+        const res = await this.$http.get("message/page",{params:{page_index:this.pageIndex,page_size:this.pageSize}});
+        console.log(res.data)
+        if(res.code==200){
+          this.content=''
+          // this.cards=res.data.result
+        }
+    },
+  },
 };
 </script>
 
@@ -36,7 +61,9 @@ export default {
     width: 90vw;
     margin-left: 5vw;
     margin-bottom: 34px;
-    background: chartreuse;
+     background: url('../assets/img/nw.png') no-repeat;
+     background-size: contain;
+     background-position: center;
   }
   .msg-box{
     padding: 30px;
@@ -50,6 +77,9 @@ export default {
       line-height: 80px;
       height: 80px;
       vertical-align: top;
+      border:none;
+      font-size: 36px;
+      padding-left: 20px;
       flex: 1;
     }
     span{

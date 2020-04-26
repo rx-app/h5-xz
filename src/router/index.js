@@ -46,6 +46,11 @@ export default new Router({
       name: 'register',
       component: resolve => require(['@/views/Register'], resolve)
     },
+    {
+      path: '/history',
+      name: 'history',
+      component: resolve => require(['@/views/History'], resolve)
+    },
   ],
   linkActiveClass: 'on',
 })

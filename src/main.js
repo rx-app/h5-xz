@@ -6,6 +6,7 @@ import App from './App'
 import router from './router'
 import 'lib-flexible/flexible.js';
 
+import './assets/font/iconfont.css'
 import './assets/css/style.css'
 Vue.config.productionTip = false
 
