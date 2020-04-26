@@ -77,14 +77,15 @@ export default {
         i{color: #ddd;font-style: normal;border: 1px solid #ddd;margin-left: 15px; padding: 4px 14px;display: inline-block;}
       }
       .button{
-        color:#270E3B;
+        color:#AB76DC;
         font-size: 24px;
         width:152px;
         height:52px;
-        line-height: 52px;
+        line-height: 46px;
         text-align: center;
-        background:rgba(252,223,201,1);
-        border-radius:4px;
+        border:3px solid #AB76DC;
+        // background:rgba(252,223,201,1);
+        border-radius:26px;
         position: absolute;
         top:70px;
         right: 30px;
