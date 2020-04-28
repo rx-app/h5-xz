@@ -3,7 +3,9 @@ import Vue from 'vue'
 import router from './router'
 
 const http = axios.create({
-  baseURL: 'http://111.231.196.47:8089/mh-mall-web-api/'//process.env.VUE_APP_API_URL || '/admin/api',
+  
+  baseURL: 'https://www.morninghappy.cn/mh-mall-web-api/'
+  // baseURL: 'http://111.231.196.47:8089/mh-mall-web-api/'//process.env.VUE_APP_API_URL || '/admin/api',
   // baseURL: 'http://localhost:3000/admin/api'
 })
 http.interceptors.request.use(function (config) {

@@ -11,4 +11,5 @@ export default {
 </script>
 
 <style>
+body{height:100%;overflow: hidden;}
 </style>

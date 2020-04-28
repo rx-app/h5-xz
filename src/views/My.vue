@@ -156,7 +156,7 @@ export default {
       background: #2e1148;
       display: flex;
       padding: 35px 30px;
-      border-bottom: 1px solid #AE7BEE;
+      border-bottom: 1px solid #321a4c;
       &:last-child{
         border: none;
       }

@@ -14,13 +14,13 @@
             <img :src="item.icon" alt="">
           </div>
           <div class="card-des">
-            <div class="star-name">SUN</div>
-            <div class="star-des">The lion</div>
-            <div class="star-date">JUL 22 - AUG 22</div>
+            <div class="star-name">{{item.title}}</div>
+            <!-- <div class="star-des">The lion</div>
+            <div class="star-date">JUL 22 - AUG 22</div> -->
           </div>
-          <div class="card-button">
+          <div class="card-button" v-show="activeIndex == index">
             <div class="button-icon"></div>
-            <div class="button-txt">做测试</div>
+            <div @click="toDetail(index)" class="button-txt">做测试</div>
           </div>
         </div>
         <!-- <div class="card-item on">
@@ -80,7 +80,12 @@ export default {
     },
     async getUserInfo(){
       let res = await this.$http.get("auth/info");
-    }
+    },
+    toDetail(index){
+      if(this.activeIndex==index){
+        this.$router.push({name:'detail'})
+      }
+    },
   },
   mounted(){
     this.fetch();
