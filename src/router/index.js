@@ -17,8 +17,9 @@ export default new Router({
       component: resolve => require(['@/views/Home'], resolve)
     },
     {
-      path: '/detail',
+      path: '/detail/:id',
       name: 'detail',
+      props: true,
       component: resolve => require(['@/views/Main-detail'], resolve)
     },
     {
@@ -49,7 +50,7 @@ export default new Router({
     {
       path: '/history',
       name: 'history',
-      component: resolve => require(['@/views/History'], resolve)
+      component: resolve => require(['@/views/CardRecords'], resolve)
     },
   ],
   linkActiveClass: 'on',

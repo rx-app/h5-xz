@@ -20,7 +20,7 @@
       <div class="list">
         <router-link tag="div" :to="{name:'history'}" class="item">
           <i class="iconfont icon-lishi1"></i>
-          <div class="text">历史记录</div>
+          <div class="text">我的测试结果</div>
           <span class="iconfont icon-arr-right"></span>
         </router-link>
         <div class="item">
@@ -65,7 +65,7 @@ export default {
 <style  lang="scss"  scoped>
 .main {
   background: #270e3b;
-  height: 100vh;
+  height: calc( 100vh - 84px - 110px );
   padding-top: 80px;
       // background: url('../assets/img/icon-star.png') no-repeat;
 
@@ -95,12 +95,12 @@ export default {
         
         .icon-hat{
           position: absolute;
-          right: -16px;
-          top: -16px;
+          right: -32px;
+          top: -32px;
           width: 76px;
           height: 76px;
           background:url('../assets/img/level-2.png') no-repeat;
-          transform: rotate(22deg);
+          transform: rotate(16deg);
           background-size: cover;
           }
       }

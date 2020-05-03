@@ -20,7 +20,7 @@
           </div>
           <div class="card-button" v-show="activeIndex == index">
             <div class="button-icon"></div>
-            <div @click="toDetail(index)" class="button-txt">做测试</div>
+            <div @click="toDetail(index,item.id)" class="button-txt">做测试</div>
           </div>
         </div>
         <!-- <div class="card-item on">
@@ -81,9 +81,9 @@ export default {
     async getUserInfo(){
       let res = await this.$http.get("auth/info");
     },
-    toDetail(index){
+    toDetail(index,id){
       if(this.activeIndex==index){
-        this.$router.push({name:'detail'})
+        this.$router.push({name:'detail',params:{id}})
       }
     },
   },

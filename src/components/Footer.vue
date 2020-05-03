@@ -41,17 +41,17 @@ export default {
     text-align: center;
     .txt{font-size:20px;color:#CA92FB;line-height: 28px;}
     i{
-      display: inline-block;
-      width: 54px;
+      display: block;
+      width: 33vw;
       height: 54px;
     }
-    .icon-main {background: url('../assets/img/icon-main.png') no-repeat;background-size: contain;}
-    .icon-release {background: url('../assets/img/icon-release.png') no-repeat;background-size: contain;}
-    .icon-my {background: url('../assets/img/icon-my.png') no-repeat;background-size: contain;}
+    .icon-main {background: url('../assets/img/icon-main.png') no-repeat;background-size: contain;background-position: center;}
+    .icon-release {background: url('../assets/img/icon-release.png') no-repeat;background-size: contain;background-position: center}
+    .icon-my {background: url('../assets/img/icon-my.png') no-repeat;background-size: contain;background-position: center}
     &.on{
-      .icon-main {background: url('../assets/img/icon-main-on.png') no-repeat;background-size: contain;}
-      .icon-release {background: url('../assets/img/icon-release-on.png') no-repeat;background-size: contain;}
-      .icon-my {background: url('../assets/img/icon-my-on.png') no-repeat;background-size: contain;}
+      .icon-main {background: url('../assets/img/icon-main-on.png') no-repeat;background-size: contain;background-position: center}
+      .icon-release {background: url('../assets/img/icon-release-on.png') no-repeat;background-size: contain;background-position: center}
+      .icon-my {background: url('../assets/img/icon-my-on.png') no-repeat;background-size: contain;background-position: center}
     }
 
     

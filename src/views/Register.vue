@@ -25,6 +25,7 @@ export default {
 
     };
   },
+  
   methods: {
     async register() {
       let pwd = md5(this.password);

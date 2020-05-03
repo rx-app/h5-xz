@@ -7,9 +7,9 @@
           <div class="left"></div>
           <div class="right"></div>
         </div>
-        <div class="name">白羊座</div>
+        <div class="name" @click="save">保存</div>
         <div class="img">
-          <img src="" alt="">
+          <img :src="src" alt="">
         </div>
         <div class="info">
           <div class="left">
@@ -22,8 +22,8 @@
           </div>
           
         </div>
-        <div class="des">
-            Buying the right telescope to take your love of astronomy to the next level is a big next step in the development of your passion for the stars. In many ways, it is a big step from someone who is just fooling around with astronomy to a serious student of the science. But you and I both know that there is still another big step after buying a telescope before you really know how to use it.
+        <div class="des" v-html="res.content">
+            <!-- Buying the right telescope to take your love of astronomy to the next level is a big next step in the development of your passion for the stars. In many ways, it is a big step from someone who is just fooling around with astronomy to a serious student of the science. But you and I both know that there is still another big step after buying a telescope before you really know how to use it. -->
           </div>
       </div>
     </div>
@@ -35,8 +35,37 @@
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 export default {
+  props: {
+    id: {}
+  },
   data() {
-    return {};
+    return {
+      res : {},
+      src:'',
+    };
+  },
+  methods:{
+    async getCardDetail(){
+      const res = await this.$http.get(`card/${this.id}`);
+      this.res = res.data;
+      // this.$nextTick(()=>{
+        this.src = this.res.icon
+      // })
+      console.log(this.src)
+      console.log(res.data)
+    },
+    async save(){
+      const res = await this.$http.post(`card/record/day/create`,{card_id:this.id});
+      // this.res = res.data;
+      if(res.code==200){
+        alert('保存成功')
+      }else{
+        alert(res.msg)
+      }
+    },
+  },
+  mounted(){
+    this.getCardDetail();
   },
   components: {
     Header,
@@ -51,6 +80,7 @@ export default {
   .star {
     width: 630px;
     height: 1162px;
+    margin-left: 60px;
     background: linear-gradient(
       360deg,
       rgba(239, 222, 252, 0.04) 0%,
@@ -114,7 +144,7 @@ export default {
       }
     }
     .des{font-size: 28px;color: #fff;line-height: 160%;}
-    .img{width:300px;height: 300px;background: chartreuse;margin:46px 0 70px 130px;}
+    .img{width:300px;height: 300px;margin:46px 0 70px 130px;}
   }
 }
 .rotate-section {
