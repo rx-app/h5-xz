@@ -52,6 +52,11 @@ export default new Router({
       name: 'history',
       component: resolve => require(['@/views/CardRecords'], resolve)
     },
+    {
+      path: '/messageAndriod',
+      name: 'messageAndriod',
+      component: resolve => require(['@/views/message-andriod'], resolve)
+    },
   ],
   linkActiveClass: 'on',
 })

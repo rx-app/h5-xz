@@ -2,27 +2,41 @@
   <div class="hello">
     <Header></Header>
     <div class="main">
-      <!-- <div class="top"></div> -->
+      <div class="top"></div>
       <div class="bottom">
         
       </div>
       
       
     </div>
-    <div class="msg-container">
-        <div class="msg-list list1">
-          <div v-for="(item,index) in msgs" :key="index" class="item">{{item.content}}</div>
-        </div>
-        <div class="msg-list list2">
-          <div v-for="i in 10" :key="i" class="item">近期能否升值加薪2</div>
-        </div>
-        <div class="msg-list list3">
-          <div v-for="i in 10" :key="i" class="item">近期能否升值加薪3</div>
-        </div>
-        <div class="msg-box">
-          <input class="msg-text" type="text" v-model="content" @focus="adjust" placeholder="请诚心输入你的留言"><span @click="sendMsg">确认</span>
-        </div>
+    <div class="msg-container msg-1" v-show="toggle">
+      <div class="msg-list list1" >
+        <div v-for="(item,index) in msgs" :key="index" class="item">{{item.content}}</div>
       </div>
+      <div class="msg-list list2">
+        <div v-for="i in 10" :key="i" class="item">近期能否升值加薪2</div>
+      </div>
+      <div class="msg-list list3">
+        <div v-for="i in 10" :key="i" class="item">近期能否升值加薪3</div>
+      </div>
+      <div class="msg-box">
+        <input class="msg-text" ref="input1" type="text" v-model="content" @click="showmsg2" @blur="adjustmsg1" placeholder="请诚心输入你的留言"><span  @click="showmsg2" >确认</span>
+      </div>
+    </div>
+    <div class="msg-container msg-2" v-show="!toggle">
+      <div class="msg-list list1">
+        <div v-for="(item,index) in msgs" :key="index" class="item">{{item.content}}</div>
+      </div>
+      <div class="msg-list list2">
+        <div v-for="i in 10" :key="i" class="item">近期能否升值加薪2</div>
+      </div>
+      <div class="msg-list list3">
+        <div v-for="i in 10" :key="i" class="item">近期能否升值加薪3</div>
+      </div>
+      <div class="msg-box">
+        <input class="msg-text" ref="input2" type="text" v-model="content" @focus="toggle=false" @blur="adjust" placeholder="请诚心输入你的留言"><span @click="sendMsg">确认</span>
+      </div>
+    </div>
     <Footer></Footer>
   </div>
 </template>
@@ -33,11 +47,29 @@ import Footer from "../components/Footer";
 export default {
   data() {
     return {
+      toggle:true,
       pageIndex:1,
       pageSize:100,
       content:'',
       msgs:[],
+      ifSend:false,
     };
+  },
+  beforeRouteEnter (to, from, next) {
+    var u = navigator.userAgent;
+        if (u.indexOf("Android") > -1 || u.indexOf("Linux") > -1) {
+          next('messageAndriod')
+        }else{
+          next()
+        }
+    
+    // if(this.isAndroid){
+    //   this.$router.push('home')
+    // }else{
+    //   next()
+    // }
+
+    // next()
   },
   components: {
     Header,
@@ -52,18 +84,77 @@ export default {
     // alert(document.body.srollTop)
   },
   methods:{
+    // 判断安卓
+    isAndroid() {
+        var u = navigator.userAgent;
+        if (u.indexOf("Android") > -1 || u.indexOf("Linux") > -1) {
+           return true;
+        }
+        return false;
+    },
+    // 判断设备为 ios
+    isIos() {
+        var u = navigator.userAgent;
+        if (u.indexOf("iPhone") > -1 || u.indexOf("iOS") > -1) {
+            return true;
+        }
+        return false;
+    },
+    showmsg2(){
+      this.toggle = false;
+      // debugger
+      setTimeout(()=>{
+        this.$refs.input2.focus()
+        this.toggle = false; 
+        // window.scrollBy(0, -200 )
+      },310) 
+      this.$refs.input2.focus()
+      // this.$refs.input2.scrollIntoView()
+    },
     adjust(){  //防止页面收缩出现黑边
-      // setTimeout(()=>{
-      //   window.scrollBy(0, -200 )
-      // },10) 
+      // this.toggle = true; 
+      setTimeout(()=>{
+        
+        window.scrollBy(0, -200 )
+        // if(document.activeElement)
+        // if(!this.ifSend){
+        //   this.toggle = true;
+        // }
+         this.toggle = true;
+        
+      },1000) 
+      
+    },
+    adjustmsg1(){  //防止页面收缩出现黑边
+      // this.toggle = true; 
+      setTimeout(()=>{
+        
+        window.scrollBy(0, -200 )
+        // if(document.activeElement)
+        // if(!this.ifSend){
+        //   this.toggle = true;
+        // }
+        //  this.toggle = true;
+        
+      },10) 
+      
+    },
+    adjust2(){  //防止页面收缩出现黑边
+      setTimeout(()=>{
+        window.scrollBy(0, -200 )
+      },10)
+      
     },
     async sendMsg(){
         const res = await this.$http.post("message/create",{content:this.content});
         console.log(res.data)
         if(res.code==200){
           this.content=''
+          this.toggle = true;
+          this.ifSend = true;
           // this.cards=res.data.result
         }
+        
     },
     async getMsgList(){
         const res = await this.$http.get("message/page",{params:{page_index:this.pageIndex,page_size:this.pageSize}});
@@ -107,7 +198,16 @@ export default {
     width: 100vw;
     padding-top: 30px;
     position: absolute;
-    bottom:110px;
+    &.msg-1{
+      bottom:110px;
+    }
+    
+    // top:100px;
+    &.msg-2{
+      // bottom:110px;
+      top:100px;
+
+    }
     .msg-list{
       height: 58px;
       width: 10000px;
