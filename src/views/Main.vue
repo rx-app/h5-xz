@@ -152,12 +152,13 @@ export default {
     .card-icon{
       height: 180px;
       width: 180px;
-      img{width: 100%;height: 100%;}
+      border-radius:16px;
+      img{width: 100%;height: 100%;border-radius:16px;}
     }
     .card-des{
       flex:1;
       height: 180px;
-      margin-left: 10px;
+      margin-left: 32px;
       .star-name{font-size: 36px;line-height: 50px;margin-top: 10px;color: #fff}
       .star-des{font-size: 28px;line-height: 40px;margin-top: 0px;color: #9452A3}
       .star-date{font-size: 28px;line-height: 40px;margin-top: 25px;color: #FCDFC9}
