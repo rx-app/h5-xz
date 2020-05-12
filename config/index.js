@@ -43,7 +43,7 @@ module.exports = {
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: './',
+    assetsPublicPath: './', //线上运行不能用 ./   如果需要本地直接打开，改成./
 
     /**
      * Source Maps

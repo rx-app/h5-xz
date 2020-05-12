@@ -57,7 +57,7 @@ export default {
 <style  lang="scss"  scoped>
 .main {
   background: #270e3b;
-  height: calc( 100vh - 84px - 110px );
+  height: calc( 100vh  - 110px );
   // padding-top: 80px;
       // background: url('../assets/img/icon-star.png') no-repeat;
 

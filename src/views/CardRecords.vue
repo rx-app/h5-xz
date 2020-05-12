@@ -151,7 +151,7 @@ export default {
 }
 .star-cards {
   padding: 0 30px;
-  height: calc(100vh - 84px - 110px - 545px);
+  height: calc(100vh  - 110px - 545px);
   overflow-y: scroll;
   // background: #270E3B;
   .card-item {

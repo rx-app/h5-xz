@@ -1,6 +1,6 @@
 <template>
   <div class="xz-header">
-    塔罗占卜
+    <!-- 塔罗占卜 -->
   </div>
 </template>
 
@@ -17,11 +17,11 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style  lang="scss"  scoped>
 .xz-header{
-    text-align: center;
-    height: 84px;
-    line-height: 84px;
-    font-size: 34px;
-    color: #fff;
-    background: #3B1A62;
+    // text-align: center;
+    // height: 84px;
+    // line-height: 84px;
+    // font-size: 34px;
+    // color: #fff;
+    // background: #3B1A62;
 }
 </style>

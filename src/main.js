@@ -10,6 +10,11 @@ import './assets/font/iconfont.css'
 import './assets/css/style.css'
 Vue.config.productionTip = false
 
+import Vant from 'vant';
+import 'vant/lib/index.css';
+
+Vue.use(Vant);
+
 import http from './http'
 Vue.prototype.$http = http
 

@@ -82,7 +82,7 @@ export default {
 .main {
   background: #270e3b;
   // height: 100vh;
-  height: calc(100vh - 84px - 110px );
+  height: calc(100vh - 110px );
   position: relative;
 }
   .top{
