@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
     <Header></Header>
-    <div class="main">
+    <div v-if="isFinished" class="main">
       <div class="rotate-section">
         <div class="text-box"></div>
         <div class="rotate-img">
@@ -15,44 +15,15 @@
           </div>
           <div class="card-des">
             <div class="star-name">{{item.title}}</div>
-            <!-- <div class="star-des">The lion</div>
-            <div class="star-date">JUL 22 - AUG 22</div> -->
           </div>
           <div class="card-button" v-show="activeIndex == index">
             <div class="button-icon"></div>
             <div @click="toDetail(index,item.id)" class="button-txt">做测试</div>
           </div>
         </div>
-        <!-- <div class="card-item on">
-          <div class="card-icon">
-            <img src="../assets/img/icon-star.png" alt="">
-          </div>
-          <div class="card-des">
-            <div class="star-name">SUN</div>
-            <div class="star-des">The lion</div>
-            <div class="star-date">JUL 22 - AUG 22</div>
-          </div>
-          <div class="card-button">
-            <div class="button-icon"></div>
-            <div class="button-txt">做测试</div>
-          </div>
-        </div>
-        <div class="card-item">
-          <div class="card-icon">
-            <img src="../assets/img/icon-star.png" alt="">
-          </div>
-          <div class="card-des">
-            <div class="star-name">SUN</div>
-            <div class="star-des">The lion</div>
-            <div class="star-date">JUL 22 - AUG 22</div>
-          </div>
-          <div class="card-button">
-            <div class="button-icon"></div>
-            <div class="button-txt">做测试</div>
-          </div>
-        </div> -->
       </div>
     </div>
+      <Card v-else></Card>
     <Footer></Footer>
   </div>
 </template>
@@ -60,6 +31,7 @@
 <script>
 import Header  from "../components/Header";
 import Footer  from "../components/Footer";
+import Card from './CardRecords'
 export default {
   data () {
     return {
@@ -67,6 +39,7 @@ export default {
       pageSize:100,
       cards:[],
       activeIndex:null,
+      isFinished:false,
     }
   },
   methods:{
@@ -87,6 +60,16 @@ export default {
       }
     },
   },
+  beforeCreate(){
+    let t = localStorage.getItem('savetime');
+    new Date().toDateString() == new Date(t).toDateString()
+    if(new Date().toDateString() == new Date(t*1).toDateString()){
+      // alert('今日已测试')
+      this.isFinished = true;
+    }else{
+      // alert('今日已测试2')
+    }
+  },
   mounted(){
     this.fetch();
     // this.getUserInfo();
@@ -94,6 +77,7 @@ export default {
   components:{
     Header,
     Footer,
+    Card,
   },
 }
 </script>
