@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
     <Header></Header>
-    <div v-if="isFinished" class="main">
+    <div v-if="!isFinished" class="main">
       <div class="rotate-section">
         <div class="text-box"></div>
         <div class="rotate-img">
@@ -60,14 +60,16 @@ export default {
       }
     },
   },
-  beforeCreate(){
+  created(){    
     let t = localStorage.getItem('savetime');
-    new Date().toDateString() == new Date(t).toDateString()
-    if(new Date().toDateString() == new Date(t*1).toDateString()){
-      // alert('今日已测试')
-      this.isFinished = true;
-    }else{
-      // alert('今日已测试2')
+    if(t){
+      new Date().toDateString() == new Date(t).toDateString()
+      if(new Date().toDateString() == new Date(t*1).toDateString()){
+        // alert('今日已测试')
+        this.isFinished = true;
+      }else{
+        // alert('今日已测试2')
+      }
     }
   },
   mounted(){
