@@ -11,13 +11,13 @@
     </div>
     <div class="msg-container msg-1" v-show="toggle">
       <div class="msg-list list1" >
-        <div v-for="(item,index) in msgs" :key="index" class="item">{{item.content}}</div>
+        <div v-for="(item,index) in list1" :key="index" class="item">{{item.content}}</div>
       </div>
       <div class="msg-list list2">
-        <div v-for="i in 10" :key="i" class="item">近期能否升值加薪2</div>
+        <div v-for="(item,index) in list2" :key="index" class="item">{{item.content}}</div>
       </div>
       <div class="msg-list list3">
-        <div v-for="i in 10" :key="i" class="item">近期能否升值加薪3</div>
+        <div v-for="(item,index) in list3" :key="index" class="item">{{item.content}}</div>
       </div>
       <div class="msg-box">
         <input class="msg-text" ref="input1" type="text" v-model="content" @click="showmsg2" @blur="adjustmsg1" placeholder="请诚心输入你的留言"><span  @click="showmsg2" >确认</span>
@@ -25,13 +25,13 @@
     </div>
     <div class="msg-container msg-2" v-show="!toggle">
       <div class="msg-list list1">
-        <div v-for="(item,index) in msgs" :key="index" class="item">{{item.content}}</div>
+        <div v-for="(item,index) in list1" :key="index" class="item">{{item.content}}</div>
       </div>
       <div class="msg-list list2">
-        <div v-for="i in 10" :key="i" class="item">近期能否升值加薪2</div>
+        <div v-for="(item,index) in list2" :key="index" class="item">{{item.content}}</div>
       </div>
       <div class="msg-list list3">
-        <div v-for="i in 10" :key="i" class="item">近期能否升值加薪3</div>
+        <div v-for="(item,index) in list3" :key="index" class="item">{{item.content}}</div>
       </div>
       <div class="msg-box">
         <input class="msg-text" ref="input2" type="text" v-model="content" @focus="toggle=false" @blur="adjust" placeholder="请诚心输入你的留言"><span @click="sendMsg">确认</span>
@@ -53,6 +53,9 @@ export default {
       content:'',
       msgs:[],
       ifSend:false,
+      list1:[],
+      list2:[],
+      list3:[],
     };
   },
   beforeRouteEnter (to, from, next) {
@@ -160,8 +163,19 @@ export default {
         const res = await this.$http.get("message/page",{params:{page_index:this.pageIndex,page_size:this.pageSize}});
         console.log(res.data)
         if(res.code==200){
-          this.msgs=res.data.result
-          this.msgs =[ ...this.msgs,...this.msgs,...this.msgs,...this.msgs,...this.msgs,...this.msgs,]
+          this.msgs=res.data.result;
+          // this.msgs= [1,2,3,4,5,6]
+          let len = Math.floor(this.msgs.length/3)
+          this.list1 = this.msgs.slice(0,len)
+          console.log(this.list1)
+          // this.list1 = [ ...this.list1,...this.list1,...this.list1,...this.list1,...this.list1,...this.list1,]
+          this.list2 = this.msgs.slice(len,len*2)
+          console.log(this.list2)
+          // this.list2 = [ ...this.list2,...this.list2,...this.list2,...this.list2,...this.list2,...this.list2,]
+          this.list3 = this.msgs.slice(len*2,len*3)
+          console.log(this.list3)
+          // this.list3 = [ ...this.list3,...this.list3,...this.list3,...this.list3,...this.list3,...this.list3,]  
+          // this.msgs =[ ...this.msgs,...this.msgs,...this.msgs,...this.msgs,...this.msgs,...this.msgs,]
           // this.cards=res.data.result
         }
     },

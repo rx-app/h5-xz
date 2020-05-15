@@ -4,7 +4,7 @@
     <div class="main">
       <div class="my">
         <div class="avatar2 level-2">
-          <i class="icon-hat"></i>
+          <!-- <i class="icon-hat"></i> -->
           <img :src="require('../assets/img/icon-my.png')" alt />
         </div>
         <div class="name">
@@ -18,11 +18,11 @@
         </div>
       </div>
       <div class="list">
-        <router-link tag="div" :to="{name:'history'}" class="item">
+        <div tag="div" @click="getCardDetail" class="item">
           <i class="iconfont icon-lishi1"></i>
           <div class="text">我的测试结果</div>
           <span class="iconfont icon-arr-right"></span>
-        </router-link>
+        </div>
         <div class="item">
           <i class="iconfont icon-duihua"></i>
           <div class="text">在线客服</div>
@@ -37,6 +37,8 @@
 <script>
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import { Dialog } from 'vant';
+import { Toast } from 'vant';
 export default {
   data() {
     return {
@@ -51,6 +53,27 @@ export default {
     this.getUserInfo();
   },
   methods:{
+    async getCardDetail(){
+      const res = await this.$http.get(`card/record/day`);
+      // debugger
+      if(res.data){
+        this.$router.push({name:main})
+      }else{
+        Dialog({ 
+          message: '今天还未测试' ,
+          width:'50vw',
+          height:'150vw'
+        });
+        // Toast('今天还未测试');
+      }
+      // this.res = res.data;
+      // // this.$nextTick(()=>{
+      //   this.src = this.res.icon
+      // // })
+      // // this.save()
+      // console.log(this.src)
+      // console.log(res.data)
+    },
     getUserInfo(){
       let info = localStorage.getItem('info')
       info = JSON.parse(info)
@@ -61,7 +84,11 @@ export default {
   },
 };
 </script>
-
+<style>
+/* .van-dialog__content{background: #321a4c;color:#fff}
+.van-dialog__confirm{background: #321a4c;color: #fff;}
+.van-dialog__footer{background: #321a4c;color: #fff;} */
+</style>
 <style  lang="scss"  scoped>
 .main {
   background: #270e3b;
@@ -76,41 +103,47 @@ export default {
       position: relative;
       display: inline-block;
       width: 186px;
-      height: 186px;
+      height: 208px;
       margin: 0 0 30px;
-      border: 6px solid #FFC38E;
-      border-radius: 50%;
+      padding: 27px 7px 7px;
+      // border: 6px solid #FFC38E;
+      // border-radius: 50%;
       // background: chartreuse;
       // background: url('../assets/img/icon-my.png') no-repeat;
-      background-size: cover;
+      background-size: 100% 100%;
       &.level-0{
-        border-color:#AE7BEE ;
+        // border-color:#AE7BEE ;
       }
       &.level-1{
-        border-color:#FFC38E ;
+        // border-color:#FFC38E ;
+         background:url('../assets/img/lv1.png') no-repeat;
+        background-size: contain;
       }
       &.level-2{
+        background:url('../assets/img/lv2.png') no-repeat;
+        background-size: contain;
+        // border-color:#C0C4C7 ;
         
-        border-color:#C0C4C7 ;
-        
-        .icon-hat{
-          position: absolute;
-          right: -32px;
-          top: -32px;
-          width: 76px;
-          height: 76px;
-          background:url('../assets/img/level-2.png') no-repeat;
-          transform: rotate(16deg);
-          background-size: cover;
-          }
+        // .icon-hat{
+        //   position: absolute;
+        //   right: 0px;
+        //   top: -32px;
+        //   width:186px;
+        //   height: 208px;
+        //   background:url('../assets/img/lv2.png') no-repeat;
+        //   transform: rotate(16deg);
+        //   background-size: cover;
+        //   }
       }
       &.level-3{
-        border-color:#F9CF7E ;
+        // border-color:#F9CF7E ;
+         background:url('../assets/img/lv3.png') no-repeat;
+        background-size: contain;
       }
       img{
         display: block;
-        width: 166px;
-      height: 166px;
+        width: 172px;
+      height: 172px;
       border-radius: 50%;
       //  background: url('../assets/img/icon-my.png') no-repeat;
       }

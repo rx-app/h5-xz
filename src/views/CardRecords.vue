@@ -32,6 +32,9 @@ export default {
   methods:{
     async getCardDetail(){
       const res = await this.$http.get(`card/record/day`);
+      if(!res.data){
+        // this.$router.push
+      }
       this.res = res.data;
       // this.$nextTick(()=>{
         this.src = this.res.icon
