@@ -4,12 +4,12 @@
     <div class="main">
       <div class="star">
         <div class="img">
-          <img :src="src" alt="">
+          <img :src="src" alt />
         </div>
         <div class="title">{{res.title}}</div>
         <div class="des" v-html="res.content">
-            <!-- Buying the right telescope to take your love of astronomy to the next level is a big next step in the development of your passion for the stars. In many ways, it is a big step from someone who is just fooling around with astronomy to a serious student of the science. But you and I both know that there is still another big step after buying a telescope before you really know how to use it. -->
-          </div>
+          <!-- Buying the right telescope to take your love of astronomy to the next level is a big next step in the development of your passion for the stars. In many ways, it is a big step from someone who is just fooling around with astronomy to a serious student of the science. But you and I both know that there is still another big step after buying a telescope before you really know how to use it. -->
+        </div>
       </div>
     </div>
     <Footer></Footer>
@@ -25,24 +25,24 @@ export default {
   // },
   data() {
     return {
-      res : {},
-      src:'',
+      res: {},
+      src: ""
     };
   },
-  methods:{
-    async getCardDetail(){
+  methods: {
+    async getCardDetail() {
       const res = await this.$http.get(`card/record/day`);
-      if(!res.data){
+      if (!res.data) {
         // this.$router.push
       }
       this.res = res.data;
       // this.$nextTick(()=>{
-        this.src = this.res.icon
+      this.src = this.res.icon;
       // })
       // this.save()
-      console.log(this.src)
-      console.log(res.data)
-    },
+      console.log(this.src);
+      console.log(res.data);
+    }
     // async save(){
     //   const res = await this.$http.post(`card/record/day/create`,{card_id:this.id});
     //   // this.res = res.data;
@@ -53,7 +53,7 @@ export default {
     //   }
     // },
   },
-  mounted(){
+  mounted() {
     this.getCardDetail();
   },
   components: {
@@ -63,44 +63,65 @@ export default {
 };
 </script>
 <style>
-.des img{width: 100%!important;}
+.des img {
+  width: 100% !important;
+}
+.ql-align-center img {
+  width: 100%;
+}
 </style>
 
 <style  lang="scss"  scoped>
 .main {
   background: #270e3b;
   padding-top: 200px;
+  overflow: auto;
   .star {
     width: 630px;
-    height: calc(100vh - 110px );
+    height: calc(100vh - 110px);
     margin-left: 60px;
     background: linear-gradient(
       360deg,
       rgba(239, 222, 252, 0.04) 0%,
       rgba(251, 235, 255, 0.24) 100%
     );
-    img{width: 100%;}
+    img {
+      width: 100%;
+    }
     border-radius: 20px;
     // opacity: 0.76;  写上这个好像name这里有模糊感
     position: relative;
     padding: 60px 30px;
-    .img{width:220px;height: 220px;margin:36px auto 20px;}
-    .title{text-align: center;height: 40px;line-height: 40px;font-size: 40px;color: #fff;;}
-    .des{
+    .img {
+      width: 220px;
+      height: 220px;
+      margin: 36px auto 20px;
+    }
+    .title {
+      text-align: center;
+      height: 40px;
+      line-height: 40px;
+      font-size: 40px;
+      color: #fff;
+    }
+    .des {
       font-size: 28px;
       color: #fff;
       line-height: 160%;
-      img{width: 100%;}
+      img {
+        width: 100%;
+      }
     }
-    
   }
 }
-.des{
-      font-size: 28px;
-      color: #fff;
-      line-height: 160%;
-      p img{width: 100%!important;}
-    }
+.des {
+  font-size: 28px;
+  color: #fff;
+  line-height: 160%;
+  p img {
+    width: 100% !important;
+  }
+}
 .rotate-section {
   height: 545px;
   padding: 40px 0;
@@ -122,8 +143,8 @@ export default {
     display: flex;
     background: linear-gradient(
       360deg,
-      rgba(247, 218, 255, 0.04) 0%,
-      rgba(249, 229, 255, 0.17) 100%
+      rgba(0, 0, 0, 0.9) 0%,
+      rgba(0, 0, 0, 0.17) 100%
     );
     border-radius: 16px;
     opacity: 0.8;

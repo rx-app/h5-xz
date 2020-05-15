@@ -37,33 +37,36 @@
 <script>
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import { Dialog } from 'vant';
-import { Toast } from 'vant';
+import { Dialog } from "vant";
+import { Toast } from "vant";
 export default {
   data() {
     return {
-      info:{}
+      info: {}
     };
   },
   components: {
     Header,
     Footer
   },
-  mounted(){
+  mounted() {
     this.getUserInfo();
   },
-  methods:{
-    async getCardDetail(){
+  methods: {
+    async getCardDetail() {
+      Dialog({
+        className: "no-centent-dialog",
+        message: "暂无今日数据",
+        confirmButtonText: "关闭",
+        overlayStyle: {
+          "background-color": "rgba(0,0,0,.5)"
+        }
+      });
       const res = await this.$http.get(`card/record/day`);
       // debugger
-      if(res.data){
-        this.$router.push({name:main})
-      }else{
-        Dialog({ 
-          message: '今天还未测试' ,
-          width:'50vw',
-          height:'150vw'
-        });
+      if (res.data) {
+        this.$router.push({ name: main });
+      } else {
         // Toast('今天还未测试');
       }
       // this.res = res.data;
@@ -74,32 +77,56 @@ export default {
       // console.log(this.src)
       // console.log(res.data)
     },
-    getUserInfo(){
-      let info = localStorage.getItem('info')
-      info = JSON.parse(info)
-      this.info = info
-      console.log(this.info)
+    getUserInfo() {
+      let info = localStorage.getItem("info");
+      info = JSON.parse(info);
+      this.info = info;
+      console.log(this.info);
       // 这里可能需要判断info是否info是否存在
-    },
-  },
+    }
+  }
 };
 </script>
 <style>
 /* .van-dialog__content{background: #321a4c;color:#fff}
 .van-dialog__confirm{background: #321a4c;color: #fff;}
 .van-dialog__footer{background: #321a4c;color: #fff;} */
+.no-centent-dialog {
+  color: #fff;
+  background: #2e1148;
+  width: 60vw;
+  border: 6px solid rgba(0, 0, 0, 0.2);
+  /* box-shadow: 0px 0px 10px 5px rgba(199, 199, 199, 0.5) */
+}
+.no-centent-dialog .van-dialog__message {
+  height: 22vw;
+  line-height: 28vw;
+  padding: 0px;
+  font-size: 0.48rem;
+  overflow: hidden;
+}
+.no-centent-dialog .van-dialog__footer {
+  text-align: center;
+}
+.no-centent-dialog .van-button--default {
+  color: #fff;
+  width: 28vw;
+  background: #250e3a;
+  border-radius: 100px;
+  margin-bottom: 8vw;
+}
 </style>
 <style  lang="scss"  scoped>
 .main {
   background: #270e3b;
-  height: calc( 100vh - 110px );
+  height: calc(100vh - 110px);
   padding-top: 80px;
-      // background: url('../assets/img/icon-star.png') no-repeat;
+  // background: url('../assets/img/icon-star.png') no-repeat;
 
   .my {
-      // background: url('../assets/img/icon-star.png') no-repeat;
+    // background: url('../assets/img/icon-star.png') no-repeat;
     text-align: center;
-    .avatar2{
+    .avatar2 {
       position: relative;
       display: inline-block;
       width: 186px;
@@ -111,19 +138,19 @@ export default {
       // background: chartreuse;
       // background: url('../assets/img/icon-my.png') no-repeat;
       background-size: 100% 100%;
-      &.level-0{
+      &.level-0 {
         // border-color:#AE7BEE ;
       }
-      &.level-1{
+      &.level-1 {
         // border-color:#FFC38E ;
-         background:url('../assets/img/lv1.png') no-repeat;
+        background: url("../assets/img/lv1.png") no-repeat;
         background-size: contain;
       }
-      &.level-2{
-        background:url('../assets/img/lv2.png') no-repeat;
+      &.level-2 {
+        background: url("../assets/img/lv2.png") no-repeat;
         background-size: contain;
         // border-color:#C0C4C7 ;
-        
+
         // .icon-hat{
         //   position: absolute;
         //   right: 0px;
@@ -135,17 +162,17 @@ export default {
         //   background-size: cover;
         //   }
       }
-      &.level-3{
+      &.level-3 {
         // border-color:#F9CF7E ;
-         background:url('../assets/img/lv3.png') no-repeat;
+        background: url("../assets/img/lv3.png") no-repeat;
         background-size: contain;
       }
-      img{
+      img {
         display: block;
         width: 172px;
-      height: 172px;
-      border-radius: 50%;
-      //  background: url('../assets/img/icon-my.png') no-repeat;
+        height: 172px;
+        border-radius: 50%;
+        //  background: url('../assets/img/icon-my.png') no-repeat;
       }
     }
     .name {
@@ -172,13 +199,21 @@ export default {
           );
         }
         &.level-3 {
-          background:linear-gradient(90deg,rgba(225,228,229,1) 0%,rgba(170,176,181,1) 100%);
+          background: linear-gradient(
+            90deg,
+            rgba(225, 228, 229, 1) 0%,
+            rgba(170, 176, 181, 1) 100%
+          );
         }
         &.level-2 {
-          background:linear-gradient(90deg,rgba(255,220,188,1) 0%,rgba(255,195,142,1) 100%);
+          background: linear-gradient(
+            90deg,
+            rgba(255, 220, 188, 1) 0%,
+            rgba(255, 195, 142, 1) 100%
+          );
         }
         &.level-1 {
-          background:rgba(174,123,238,1);
+          background: rgba(174, 123, 238, 1);
           color: #fff;
         }
       }
@@ -190,7 +225,7 @@ export default {
       display: flex;
       padding: 35px 30px;
       border-bottom: 1px solid #321a4c;
-      &:last-child{
+      &:last-child {
         border: none;
       }
       i {
@@ -201,7 +236,7 @@ export default {
         vertical-align: top;
         width: 60px;
         // margin-right: 20px;
-        &.icon-lishi{
+        &.icon-lishi {
           font-size: 44px;
           line-height: 44px;
           // margin-right: 8px;
@@ -216,7 +251,7 @@ export default {
       }
       span {
         font-size: 34px;
-        color: #BDA6DA;
+        color: #bda6da;
       }
     }
   }

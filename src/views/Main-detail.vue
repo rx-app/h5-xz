@@ -120,8 +120,8 @@ export default {
     display: flex;
     background: linear-gradient(
       360deg,
-      rgba(247, 218, 255, 0.04) 0%,
-      rgba(249, 229, 255, 0.17) 100%
+      rgba(0, 0, 0, 0.9) 0%,
+      rgba(0, 0, 0, 0.17) 100%
     );
     border-radius: 16px;
     opacity: 0.8;
