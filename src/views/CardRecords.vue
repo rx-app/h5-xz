@@ -2,7 +2,11 @@
   <div class>
     <Header></Header>
     <div class="main">
+      
       <div class="star">
+        <div class="avatar">
+          <img :src="avatar" alt="">
+        </div>
         <div class="img">
           <img :src="src" alt />
         </div>
@@ -23,6 +27,11 @@ export default {
   // props: {
   //   id: {}
   // },
+  computed:{
+    avatar(){
+      return localStorage.getItem('avatar') 
+    },
+  },
   data() {
     return {
       res: {},
@@ -74,9 +83,26 @@ export default {
 <style  lang="scss"  scoped>
 .main {
   background: #270e3b;
-  padding-top: 200px;
+  padding-top: 160px;
+  padding-bottom: 200px;
   overflow: auto;
+  
   .star {
+    .avatar{
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      top: -100px;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      border-radius: 50%;
+      img{
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+      }
+    }
     width: 630px;
     height: calc(100vh - 110px);
     margin-left: 60px;
@@ -91,7 +117,7 @@ export default {
     border-radius: 20px;
     // opacity: 0.76;  写上这个好像name这里有模糊感
     position: relative;
-    padding: 60px 30px;
+    padding: 100px 30px;
     .img {
       width: 220px;
       height: 220px;
@@ -108,6 +134,7 @@ export default {
       font-size: 28px;
       color: #fff;
       line-height: 160%;
+      padding-bottom: 400px;
       img {
         width: 100%;
       }

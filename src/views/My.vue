@@ -3,18 +3,18 @@
     <Header></Header>
     <div class="main">
       <div class="my">
-        <div class="avatar2 level-2">
+        <div class="avatar2 " :class="`level-${level}`">
           <!-- <i class="icon-hat"></i> -->
-          <img :src="require('../assets/img/icon-my.png')" alt />
+          <img :src="avatar" alt />
         </div>
         <div class="name">
-          <span>{{info.nickname}}</span>
+          <span>{{nickname}}</span>
         </div>
         <div class="level">
-          <span v-if="info.level==3" class="level-4">包年会员</span>
-          <span v-if="info.level==2" class="level-3">包月会员</span>
-          <span v-if="info.level==1" class="level-2">普通会员</span>
-          <span v-if="info.level==0" class="level-1">普通用户</span>
+          <span v-if="level==3" class="level-4">包年会员</span>
+          <span v-if="level==2" class="level-3">包月会员</span>
+          <span v-if="level==1" class="level-2">普通会员</span>
+          <span v-if="level==0" class="level-1">普通用户</span>
         </div>
       </div>
       <div class="list">
@@ -45,6 +45,17 @@ export default {
       info: {}
     };
   },
+  computed:{
+    avatar(){
+      return localStorage.getItem('avatar')
+    },
+    nickname(){
+      return localStorage.getItem('nickname')
+    },
+    level(){
+      return localStorage.getItem('level')
+    },
+  },
   components: {
     Header,
     Footer
@@ -54,20 +65,21 @@ export default {
   },
   methods: {
     async getCardDetail() {
-      Dialog({
-        className: "no-centent-dialog",
-        message: "暂无今日数据",
-        confirmButtonText: "关闭",
-        overlayStyle: {
-          "background-color": "rgba(0,0,0,.5)"
-        }
-      });
+      
       const res = await this.$http.get(`card/record/day`);
       // debugger
       if (res.data) {
-        this.$router.push({ name: main });
+        this.$router.push({ name: 'main' });
       } else {
         // Toast('今天还未测试');
+        Dialog({
+          className: "no-centent-dialog",
+          message: "暂无今日数据",
+          confirmButtonText: "关闭",
+          overlayStyle: {
+            "background-color": "rgba(0,0,0,.5)"
+          }
+        });
       }
       // this.res = res.data;
       // // this.$nextTick(()=>{
