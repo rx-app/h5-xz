@@ -1,6 +1,34 @@
 <template>
   <div class="hello">
-
+    <Header></Header>
+    <div v-if="!isFinished" class="main">
+      <div class="rotate-section">
+        <div class="text-box"></div>
+        <div class="rotate-img"></div>
+      </div>
+      <div class="star-cards">
+        <div
+          v-for="(item,index) in cards"
+          :key="index"
+          :class="{on:activeIndex==index}"
+          @click="activeIndex=index"
+          class="card-item"
+        >
+          <div class="card-icon">
+            <img :src="item.icon" alt />
+          </div>
+          <div class="card-des">
+            <div class="star-name">{{item.title}}</div>
+          </div>
+          <div class="card-button" v-show="activeIndex == index">
+            <div class="button-icon"  @click="toDetail(index,item.id)"></div>
+            <!-- <div class="button-txt">做测试</div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <Card v-else></Card>
+    <Footer></Footer>
   </div>
 </template>
 
