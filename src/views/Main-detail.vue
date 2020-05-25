@@ -44,10 +44,10 @@ export default {
       const res = await this.$http.post(`card/record/day/create`,{card_id:this.id});
       // this.res = res.data;
       if(res.code==200){
-        // alert('保存成功')
+        alert('保存成功')
         localStorage.setItem('savetime',new Date().getTime())
       }else{
-        // alert(res.msg)
+        alert(res.msg)
       }
     },
   },
