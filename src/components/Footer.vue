@@ -28,7 +28,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style  lang="scss"  scoped>
 .xz-footer{
-  position: absolute;
+  position: fixed;
   width: 100vw;
   height: 110px;
   padding: 10px 0;

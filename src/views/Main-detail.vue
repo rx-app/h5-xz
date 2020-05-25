@@ -1,10 +1,10 @@
 <template>
   <div class>
-    <Header></Header>
+    <!-- <Header></Header> -->
     <div class="main">
       <div class="star">
         <div class="img">
-          <img :src="src" alt="">
+          <img :src="src" alt />
         </div>
         <div class="title">{{res.title}}</div>
         <div class="des" v-html="res.content">
@@ -67,10 +67,11 @@ export default {
 <style  lang="scss"  scoped>
 .main {
   background: #270e3b;
-  padding-top: 200px;
+  padding-top: 50px;
+  padding-bottom: 200px;
   .star {
     width: 630px;
-    height: calc(100vh - 110px );
+    // height: calc(100vh - 110px );
     margin-left: 60px;
     background: linear-gradient(
       360deg,
@@ -112,7 +113,7 @@ export default {
 }
 .star-cards {
   padding: 0 30px;
-  height: calc(100vh - 110px - 545px);
+  // height: calc(100vh - 110px - 545px);
   overflow-y: scroll;
   // background: #270E3B;
   .card-item {

@@ -68,7 +68,7 @@ export default {
       this.show = true
       // 想要保存的图片节点
 
-      html2canvas(document.querySelector(".main"), {
+      html2canvas(document.querySelector(".star"), {
           allowTaint: false,
           useCORS: true
         }).then(canvas => { 

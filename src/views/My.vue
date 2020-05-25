@@ -6,7 +6,7 @@
         <div class="avatar2 " :class="`level-${level}`">
           <!-- <i class="icon-hat"></i> -->
           <img v-if="!!avatar" :src="avatar" alt="">
-          <img src="../assets/img/avatar.png" alt="">
+          <img v-else src="../assets/img/avatar.png" alt="">
         </div>
         <div class="name">
           <span>{{nickname}}</span>
