@@ -206,7 +206,7 @@ export default {
 .top {
   height: 110vw;
   width: 100vw;
-  background: url(/static/img/nw.89b9dd4.png) no-repeat;
+  background: url("../../static/nw.png") no-repeat;
   // linear-gradient(rgb(48, 22, 88) 0%,rgba(62, 34, 103, 1) 50%,rgb(27, 8, 56) 100%);
   background-size: 100%;
 }
