@@ -65,17 +65,21 @@ export default {
       }
     }
   },
-  created() {
-    let t = localStorage.getItem("savetime");
-    alert('t:'+t)
-    if (t) {
-      new Date().toDateString() == new Date(t).toDateString();
-      if (new Date().toDateString() == new Date(t * 1).toDateString()) {
-        alert('今日已测试')
-        this.isFinished = true;
-      } else {
-        alert('今日未测试')
-      }
+  async created() {
+    // let t = localStorage.getItem("savetime");
+    // alert('t:'+t)
+    // if (t) {
+    //   new Date().toDateString() == new Date(t).toDateString();
+    //   if (new Date().toDateString() == new Date(t * 1).toDateString()) {
+    //     alert('今日已测试')
+    //     this.isFinished = true;
+    //   } else {
+    //     alert('今日未测试')
+    //   }
+    // }
+    const res = await this.$http.get(`card/record/day`);
+    if(res.data){
+      this.isFinished = true;
     }
   },
   mounted() {

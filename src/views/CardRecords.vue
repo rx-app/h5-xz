@@ -78,7 +78,9 @@ export default {
         }); 
     },
     async getCardDetail() {
-      const res = await this.$http.get(`card/record/day`);
+      let res ;
+      if()
+       res = await this.$http.get(`card/record/day`);
       if (!res.data) {
         // this.$router.push
       }
