@@ -202,9 +202,10 @@ export default {
   // height: 100vh;
   height: calc(100vh - 110px);
   position: relative;
+  
 }
 .top {
-  height: 110vw;
+  height: 90vh;
   width: 100vw;
   background: url("../../static/nw.png") no-repeat;
   // linear-gradient(rgb(48, 22, 88) 0%,rgba(62, 34, 103, 1) 50%,rgb(27, 8, 56) 100%);
@@ -234,12 +235,14 @@ export default {
   // background-image: linear-gradient(to top, rgba(255,0,0,1), rgba(255,0,0,0.2));
   &.msg-1 {
     bottom: 110px;
+    overflow: hidden;
   }
 
   // top:100px;
   &.msg-2 {
     // bottom:110px;
     top: 100px;
+    overflow: hidden;
   }
   .msg-list {
     height: 58px;
