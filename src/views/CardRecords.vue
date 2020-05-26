@@ -47,9 +47,9 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import html2canvas from "html2canvas";
 export default {
-  // props: {
-  //   id: {}
-  // },
+  props: {
+    id: 0
+  },
   computed:{
     avatar(){
       return localStorage.getItem('avatar') 
@@ -79,8 +79,13 @@ export default {
     },
     async getCardDetail() {
       let res ;
-      if()
-       res = await this.$http.get(`card/record/day`);
+      if(this.id){
+        res = await this.$http.get(`card/${this.id}`);
+        this.save()
+      }else{
+        res = await this.$http.get(`card/record/day`);
+      }
+       
       if (!res.data) {
         // this.$router.push
       }
@@ -91,16 +96,17 @@ export default {
       // this.save()
       console.log(this.src);
       console.log(res.data);
-    }
-    // async save(){
-    //   const res = await this.$http.post(`card/record/day/create`,{card_id:this.id});
-    //   // this.res = res.data;
-    //   if(res.code==200){
-    //     alert('保存成功')
-    //   }else{
-    //     alert(res.msg)
-    //   }
-    // },
+    },
+    async save(){
+      const res = await this.$http.post(`card/record/day/create`,{card_id:this.id});
+      // this.res = res.data;
+      if(res.code==200){
+        alert('保存成功')
+        localStorage.setItem('savetime',new Date().getTime())
+      }else{
+        alert(res.msg)
+      }
+    },
   },
   mounted() {
     this.getCardDetail();

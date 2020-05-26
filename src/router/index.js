@@ -48,8 +48,9 @@ export default new Router({
       component: resolve => require(['@/views/Register'], resolve)
     },
     {
-      path: '/history',
+      path: '/history/:id',
       name: 'history',
+      props:true,
       component: resolve => require(['@/views/CardRecords'], resolve)
     },
     {

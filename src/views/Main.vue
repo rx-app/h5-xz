@@ -61,7 +61,7 @@ export default {
     },
     toDetail(index, id) {
       if (this.activeIndex == index) {
-        this.$router.push({ name: "detail", params: { id } });
+        this.$router.push({ name: "history", params: { id } });
       }
     }
   },
