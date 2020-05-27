@@ -106,7 +106,7 @@ export default {
 .van-dialog__footer{background: #321a4c;color: #fff;} */
 .no-centent-dialog {
   color: #fff;
-  background: #2e1148;
+  background: #2e1148!important;
   width: 60vw;
   border: 6px solid rgba(0, 0, 0, 0.2);
   /* box-shadow: 0px 0px 10px 5px rgba(199, 199, 199, 0.5) */
