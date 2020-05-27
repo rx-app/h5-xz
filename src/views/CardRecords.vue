@@ -67,12 +67,14 @@ export default {
     share(){
       this.show = true
       // 想要保存的图片节点
-
+      if(this.urlImg){
+        return
+      }
       html2canvas(document.querySelector(".main"), {
           allowTaint: false,
           useCORS: true
         }).then(canvas => { 
-          console.log(canvas.toDataURL())
+          // console.log(canvas.toDataURL())
 
           this.urlImg = canvas.toDataURL(); 
         }); 
@@ -92,6 +94,17 @@ export default {
       this.res = res.data;
       // this.$nextTick(()=>{
       this.src = this.res.icon;
+
+      this.$nextTick( ()=>{
+        html2canvas(document.querySelector(".main"), {
+          allowTaint: false,
+          useCORS: true
+        }).then(canvas => { 
+          // console.log(canvas.toDataURL())
+
+          this.urlImg = canvas.toDataURL(); 
+        }); 
+      } )
       // })
       // this.save()
       console.log(this.src);
@@ -101,7 +114,7 @@ export default {
       const res = await this.$http.post(`card/record/day/create`,{card_id:this.id});
       // this.res = res.data;
       if(res.code==200){
-        alert('保存成功')
+        // alert('保存成功')
         localStorage.setItem('savetime',new Date().getTime())
       }else{
         alert(res.msg)
@@ -165,6 +178,7 @@ export default {
   .star {
     .avatar{
       position: absolute;
+      z-index: 10;
       width: 140px;
       height: 140px;
       top: -70px;
@@ -186,6 +200,8 @@ export default {
     }
     width: 630px;
     height: calc(100vh - 190px - 110px);
+    word-wrap: break-word;
+    overflow: scroll;
     margin-left: 60px;
     background: linear-gradient(
       360deg,
@@ -198,7 +214,7 @@ export default {
     border-radius: 20px;
     // opacity: 0.76;  写上这个好像name这里有模糊感
     position: relative;
-    padding: 100px 30px;
+    padding: 100px 30px 10px;
     .img {
       width: 220px;
       height: 220px;
@@ -215,7 +231,7 @@ export default {
       font-size: 28px;
       color: #fff;
       line-height: 160%;
-      padding-bottom: 400px;
+      // padding-bottom: 400px;
       img {
         width: 100%;
       }
