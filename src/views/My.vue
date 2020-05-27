@@ -70,7 +70,15 @@ export default {
       const res = await this.$http.get(`card/record/day`);
       // debugger
       if (res.data) {
-        this.$router.push({ name: 'main' });
+        // this.$router.push({ name: 'main' });
+        Dialog({
+          className: "no-centent-dialog",
+          message: "暂无今日数据",
+          confirmButtonText: "关闭",
+          overlayStyle: {
+            "background-color": "rgba(0,0,0,.5)"
+          }
+        });
       } else {
         // Toast('今天还未测试');
         Dialog({
@@ -104,6 +112,9 @@ export default {
 /* .van-dialog__content{background: #321a4c;color:#fff}
 .van-dialog__confirm{background: #321a4c;color: #fff;}
 .van-dialog__footer{background: #321a4c;color: #fff;} */
+.van-hairline--top::after{
+  border:none!important;
+}
 .no-centent-dialog {
   color: #fff;
   background: #2e1148!important;
@@ -112,10 +123,10 @@ export default {
   /* box-shadow: 0px 0px 10px 5px rgba(199, 199, 199, 0.5) */
 }
 .no-centent-dialog .van-dialog__message {
-  height: 22vw;
-  line-height: 28vw;
+  height: 22vw!important;
+  line-height: 28vw!important;
   padding: 0px;
-  font-size: 0.48rem;
+  font-size: 0.48rem!important;
   overflow: hidden;
 }
 .no-centent-dialog .van-dialog__footer {
@@ -123,10 +134,10 @@ export default {
 }
 .no-centent-dialog .van-button--default {
   color: #fff;
-  width: 28vw;
+  width: 28vw!important;
   background: #250e3a;
   border-radius: 100px;
-  margin-bottom: 8vw;
+  margin-bottom: 8vw!important;
 }
 </style>
 <style  lang="scss"  scoped>
