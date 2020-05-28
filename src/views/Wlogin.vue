@@ -112,7 +112,7 @@ export default {
         .replace(/[=]/g, "%3d");
         let reurl='https://www.morninghappy.cn/mh-mall-web-api/auth/wx/receive_code';
         reurl = location.href
-        reurl = 'https://www.morninghappy.cn/xz/index.html#/login'
+        reurl = 'https://www.morninghappy.cn/xz/index.html#/wlogin'
         console.log(reurl)
         // reurl= encodeURI(reurl)
         reurl= encodeURIComponent(reurl)
