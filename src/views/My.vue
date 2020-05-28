@@ -64,7 +64,24 @@ export default {
   mounted() {
     this.getUserInfo();
   },
+  beforeCreate(){
+    this.checkToken();
+  },
   methods: {
+    checkToken(){
+      let token = localStorage.getItem('token')
+      const res = await this.$http.get(`auth/check/token/${token}`);
+      if(res.code!=200){
+        localStorage.setItem('url',location.href)
+        var ua = navigator.userAgent.toLowerCase();
+        if(ua.match(/MicroMessenger/i)=="micromessenger") {
+          router.push('/wlogin')
+        } else {
+          router.push('/login')
+        }
+      }
+      
+    },
     async getCardDetail() {
       
       const res = await this.$http.get(`card/record/day`);

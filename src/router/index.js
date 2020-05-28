@@ -43,6 +43,11 @@ export default new Router({
       component: resolve => require(['@/views/Login'], resolve)
     },
     {
+      path: '/wlogin',
+      name: 'wlogin',
+      component: resolve => require(['@/views/Wlogin'], resolve)
+    },
+    {
       path: '/register',
       name: 'register',
       component: resolve => require(['@/views/Register'], resolve)

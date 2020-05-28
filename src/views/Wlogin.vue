@@ -1,32 +1,5 @@
 <template>
-  <div class="page-login">
-    <router-link tag="div" :to="{name:'main'}" class="back"></router-link>
-    <div class="container">
-      <div @click="wechateLogin" class="title">
-        手机号登录
-      </div>
-      <div class="input-box">
-        <input class="username" type="text" v-model="mobile" placeholder="手机号" />
-        <span v-show="mobile" @click="mobile=''" class="close"></span>
-      </div>
-      <div class="input-box">
-        <input class="password" type="text" v-model="code" placeholder="验证码" />
-        <span v-show="code" @click="code=''" class="close"></span>
-        <div class="send-code"><span @click="getValidCode" v-show="isShow" class="send">发送验证码</span>  <span v-show="!isShow" class="time">{{time}}s</span></div>
-      </div>
-    </div>
-    <div @click="login"  class="login">
-      同意协议并登陆
-    </div>
-
-    <div class="wechat-login">
-      <div class="line"></div>
-      <div class="text">其它登录</div>
-      <div class="line"></div>
-    </div>
-    <div @click="wechateLogin"  class="wechat-icon">
-      
-    </div>
+  <div >
     
       
   </div>
@@ -111,6 +84,8 @@ export default {
         }else{
           this.$router.push({name:'main'})
         }
+        
+        
       }else{
         alert(res.msg)
       }
@@ -233,13 +208,7 @@ export default {
           localStorage.setItem('level',res2.data.level)
         }
         // localStorage.setItem('info',JSON.stringify(userInfo.data))
-        let url = localStorage.getItem('url');
-        if(url){
-           window.location.href = localStorage.getItem('url');
-        }else{
-          this.$router.push({name:'main'})
-        }
-        // this.$router.push("/");
+        this.$router.push("/");
       } else {
         // this.$message({
         //   type: "error",
