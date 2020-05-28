@@ -87,15 +87,15 @@ export default {
       const res = await this.$http.get(`card/record/day`);
       // debugger
       if (res.data) {
-        // this.$router.push({ name: 'main' });
-        Dialog({
-          className: "no-centent-dialog",
-          message: "暂无今日数据",
-          confirmButtonText: "关闭",
-          overlayStyle: {
-            "background-color": "rgba(0,0,0,.5)"
-          }
-        });
+        this.$router.push({ name: 'main' });
+        // Dialog({
+        //   className: "no-centent-dialog",
+        //   message: "暂无今日数据",
+        //   confirmButtonText: "关闭",
+        //   overlayStyle: {
+        //     "background-color": "rgba(0,0,0,.5)"
+        //   }
+        // });
       } else {
         // Toast('今天还未测试');
         Dialog({

@@ -35,6 +35,7 @@
 <script>
 import md5 from 'js-md5';
 import axios from 'axios'
+import { Dialog } from "vant";
 
 export default {
   data() {
@@ -207,7 +208,14 @@ export default {
     },
     async login(){
       if(!/^\d{11}$/.test(this.mobile)){
-        
+        Dialog({
+          className: "no-centent-dialog",
+          message: "手机号码格式错误",
+          confirmButtonText: "关闭",
+          overlayStyle: {
+            "background-color": "rgba(0,0,0,.5)"
+          }
+        });
         return false
       }
       const res = await this.$http.post("auth/verification_code/login", {
@@ -395,5 +403,37 @@ export default {
       background: url('../assets/img/wechat.png') no-repeat;
       background-size: contain;
     }
+}
+</style>
+<style>
+/* .van-dialog__content{background: #321a4c;color:#fff}
+.van-dialog__confirm{background: #321a4c;color: #fff;}
+.van-dialog__footer{background: #321a4c;color: #fff;} */
+.van-hairline--top::after{
+  border:none!important;
+}
+.no-centent-dialog {
+  color: #fff;
+  background: #2e1148!important;
+  width: 60vw;
+  border: 6px solid rgba(0, 0, 0, 0.2);
+  /* box-shadow: 0px 0px 10px 5px rgba(199, 199, 199, 0.5) */
+}
+.no-centent-dialog .van-dialog__message {
+  height: 22vw!important;
+  line-height: 28vw!important;
+  padding: 0px;
+  font-size: 0.48rem!important;
+  overflow: hidden;
+}
+.no-centent-dialog .van-dialog__footer {
+  text-align: center;
+}
+.no-centent-dialog .van-button--default {
+  color: #fff;
+  width: 28vw!important;
+  background: #250e3a;
+  border-radius: 100px;
+  margin-bottom: 8vw!important;
 }
 </style>
