@@ -155,7 +155,7 @@ export default {
       }, 1000);
     },
     adjustmsg1() {
-      //防止页面收缩出现黑边
+      //☆防止页面收缩出现黑边
       // this.toggle = true;
       setTimeout(() => {
         window.scrollBy(0, -200);
