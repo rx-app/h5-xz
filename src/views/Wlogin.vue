@@ -114,7 +114,7 @@ export default {
           localStorage.setItem('level',res2.data.level)
         }
         let url = this.getCookie('url')
-        alert('url:'+url)
+        alert('url2:'+url)
         if(url){
           window.location.href = localStorage.getItem('url')
         }else{
@@ -155,6 +155,8 @@ export default {
         // .replace(/[&]/g, "%26")
         // .replace(/[=]/g, "%3d");
         console.log(reurl)
+        let url1 = this.getCookie('url')
+        alert('url1:'+url1)
         var url =
         `https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxb3f4414e7bfb9c9e&redirect_uri=${reurl}&response_type=code&scope=snsapi_userinfo&state=STATE&connect_redirect=1#wechat_redirect`;
         // alert(url)
