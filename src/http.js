@@ -30,6 +30,10 @@ http.interceptors.response.use(res => {
     //   confirmButtonText: '确定',
     //   callback: action => {
       console.log(router)
+      var Days = 30; 
+    var exp = new Date(); 
+    exp.setTime(exp.getTime() + Days*24*60*60*1000); 
+    document.cookie = 'url' + "="+ escape (location.href) + ";expires=" + exp.toGMTString(); 
       localStorage.setItem('url',location.href)
       var ua = navigator.userAgent.toLowerCase();
       if(ua.match(/MicroMessenger/i)=="micromessenger") {

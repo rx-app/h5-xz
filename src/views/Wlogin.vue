@@ -54,6 +54,39 @@ export default {
 
 // https://api.weixin.qq.com/sns/oauth2/refresh_token?appid=APPID&grant_type=refresh_token&refresh_token=REFRESH_TOKEN
   methods: {
+    //JS操作cookies方法! 
+
+//写cookies 
+
+ setCookie(name,value) 
+{ 
+    var Days = 30; 
+    var exp = new Date(); 
+    exp.setTime(exp.getTime() + Days*24*60*60*1000); 
+    document.cookie = name + "="+ escape (value) + ";expires=" + exp.toGMTString(); 
+} ,
+
+//读取cookies 
+ getCookie(name) 
+{ 
+    var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+ 
+    if(arr=document.cookie.match(reg))
+ 
+        return unescape(arr[2]); 
+    else 
+        return null; 
+} ,
+
+//删除cookies 
+ delCookie(name) 
+{ 
+    var exp = new Date(); 
+    exp.setTime(exp.getTime() - 1); 
+    var cval=getCookie(name); 
+    if(cval!=null) 
+        document.cookie= name + "="+cval+";expires="+exp.toGMTString(); 
+} ,
     async getOpenid(code){
       const res = await this.$http.get(`auth/wx/openid/${code}`);
       // alert(res.data.open_id)
@@ -80,7 +113,7 @@ export default {
           localStorage.setItem('avatar',res2.data.avatar)
           localStorage.setItem('level',res2.data.level)
         }
-        let url = localStorage.getItem('url');
+        let url = getCookie('url')
         alert('url:'+url)
         if(url){
           window.location.href = localStorage.getItem('url')
