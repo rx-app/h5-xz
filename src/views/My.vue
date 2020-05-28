@@ -72,13 +72,18 @@ export default {
       let token = localStorage.getItem('token')
       const res = await this.$http.get(`auth/check/token/${token}`);
       if(res.code!=200){
-        localStorage.setItem('url',location.href)
-        var ua = navigator.userAgent.toLowerCase();
-        if(ua.match(/MicroMessenger/i)=="micromessenger") {
-          router.push('/wlogin')
-        } else {
-          router.push('/login')
-        }
+        console.log(router)
+          var Days = 30; 
+        var exp = new Date(); 
+        exp.setTime(exp.getTime() + Days*24*60*60*1000); 
+        document.cookie = 'url' + "="+ escape (location.href) + ";expires=" + exp.toGMTString(); 
+          localStorage.setItem('url',location.href)
+          var ua = navigator.userAgent.toLowerCase();
+          if(ua.match(/MicroMessenger/i)=="micromessenger") {
+            router.push('/wlogin')
+          } else {
+            router.push('/login')
+          }
       }
       
     },

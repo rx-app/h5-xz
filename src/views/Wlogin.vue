@@ -157,6 +157,7 @@ export default {
         console.log(reurl)
         let url1 = this.getCookie('url')
         alert('url1:'+url1)
+        alert('url3:'+localStorage.getItem('url'))
         var url =
         `https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxb3f4414e7bfb9c9e&redirect_uri=${reurl}&response_type=code&scope=snsapi_userinfo&state=STATE&connect_redirect=1#wechat_redirect`;
         // alert(url)
