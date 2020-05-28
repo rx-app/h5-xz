@@ -79,7 +79,7 @@ export default {
           localStorage.setItem('level',res2.data.level)
         }
         let url = localStorage.getItem('url');
-        alert(url)
+        alert('url:'+url)
         if(url){
           window.location.href = localStorage.getItem('url')
         }else{
