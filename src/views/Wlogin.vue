@@ -34,6 +34,8 @@ export default {
       let openid = await this.getOpenid(code)
       // alert(`openid: ${openid}`)
        let res = await this.wLongin(openid)
+    }else{
+      this.wechateLogin()
     }
   },
   // beforeRouteEnter (to, from, next) {
