@@ -68,7 +68,7 @@ export default {
     this.checkToken();
   },
   methods: {
-    checkToken(){
+    async checkToken(){
       let token = localStorage.getItem('token')
       const res = await this.$http.get(`auth/check/token/${token}`);
       if(res.code!=200){

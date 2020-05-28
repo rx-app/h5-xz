@@ -25,7 +25,7 @@
           @blur="adjustmsg1"
           placeholder="请诚心输入你的留言"
         />
-        <span @click="showmsg2">确认</span>
+        <span @click="showmsg3">确认</span>
       </div>
     </div>
     <div class="msg-container msg-2" v-show="!toggle">
@@ -128,6 +128,20 @@ export default {
       this.$refs.input2.focus();
       // this.$refs.input2.scrollIntoView()
     },
+    showmsg3() {
+      if(!this.content){
+        return
+      }
+      this.toggle = false;
+      // debugger
+      setTimeout(() => {
+        this.$refs.input2.focus();
+        this.toggle = false;
+        // window.scrollBy(0, -200 )
+      }, 310);
+      this.$refs.input2.focus();
+      // this.$refs.input2.scrollIntoView()
+    },
     adjust() {
       //防止页面收缩出现黑边
       // this.toggle = true;
@@ -159,6 +173,10 @@ export default {
       }, 10);
     },
     async sendMsg() {
+      // debugger
+      if(!this.content){
+        return
+      }
       const res = await this.$http.post("message/create", {
         content: this.content
       });
