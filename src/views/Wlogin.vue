@@ -113,7 +113,7 @@ export default {
           localStorage.setItem('avatar',res2.data.avatar)
           localStorage.setItem('level',res2.data.level)
         }
-        let url = getCookie('url')
+        let url = this.getCookie('url')
         alert('url:'+url)
         if(url){
           window.location.href = localStorage.getItem('url')
