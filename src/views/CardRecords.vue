@@ -5,12 +5,12 @@
       分享
     </div>
     <div class="main">
-      
-      <div class="star">
-        <div class="avatar">
+      <div class="avatar">
           <img v-if="!!avatar" :src="avatar" alt="">
           <img v-else src="../assets/img/avatar.png" alt="">
         </div>
+      <div class="star">
+        
         <div class="nickname">
           塔罗少年
         </div>
@@ -174,17 +174,17 @@ export default {
   padding-top: 160px;
   padding-bottom: 100px;
   overflow: auto;
-  
-  .star {
-    .avatar{
+  .avatar{
       position: absolute;
       z-index: 10;
       width: 140px;
       height: 140px;
-      top: -70px;
+      // top: -70px;
+      // top: -70px;
       left: 0;
       right: 0;
       margin: 0 auto;
+      margin-top: -70px;
       border-radius: 50%;
       img{
         width: 100%;
@@ -192,6 +192,8 @@ export default {
         border-radius: 50%;
       }
     }
+  .star {
+    
     .nickname{
       font-size: 32px;
       color: #fff;
