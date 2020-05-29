@@ -19,6 +19,9 @@ Vue.use(Vant);
 import http from './http'
 Vue.prototype.$http = http
 
+import login from './mixin/login'
+Vue.mixin(login)
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
