@@ -5,21 +5,26 @@
       分享
     </div>
     <div class="main">
+      <div class="user">
       <div class="avatar">
           <img v-if="!!avatar" :src="avatar" alt="">
           <img v-else src="../assets/img/avatar.png" alt="">
         </div>
-      <div class="star">
-        
         <div class="nickname">
           塔罗少年
         </div>
+      </div>
+      
+      <div class="star">
+        
+        <div class="container">
         <div class="img">
           <img :src="src" alt />
         </div>
         <div class="title">{{res.title}}</div>
         <div class="des" v-html="res.content">
           <!-- Buying the right telescope to take your love of astronomy to the next level is a big next step in the development of your passion for the stars. In many ways, it is a big step from someone who is just fooling around with astronomy to a serious student of the science. But you and I both know that there is still another big step after buying a telescope before you really know how to use it. -->
+        </div>
         </div>
       </div>
     </div>
@@ -173,69 +178,85 @@ export default {
   background: #270e3b;
   padding-top: 160px;
   padding-bottom: 100px;
-  overflow: auto;
-  .avatar{
+  
+  .user{
       position: absolute;
       z-index: 10;
+       left: 0;
+      right: 0;
+      margin: 0 60px;
+      background: linear-gradient(
+        360deg,
+        rgba(84, 61, 101, 1) 0%,
+        rgba(84, 61, 101, 1) 100%
+      );
+      border-radius: 20px 20px 0 0;
+      .avatar{
       width: 140px;
       height: 140px;
       // top: -70px;
       // top: -70px;
-      left: 0;
-      right: 0;
-      margin: 0 auto;
-      margin-top: -70px;
-      border-radius: 50%;
-      img{
-        width: 100%;
-        height: 100%;
+     text-align: center;
+        margin: 0 auto;
+        margin-top: -70px;
         border-radius: 50%;
+        img{
+          width: 100%;
+          height: 100%;
+          border-radius: 50%;
+        }
       }
-    }
-  .star {
-    
-    .nickname{
+      .nickname{
+        margin-top: 20px;
       font-size: 32px;
       color: #fff;
       line-height: 32px;
       text-align: center;
     }
-    width: 630px;
-    height: calc(100vh - 190px - 110px);
-    word-wrap: break-word;
-    overflow: scroll;
-    margin-left: 60px;
-    background: linear-gradient(
-      360deg,
-      rgba(239, 222, 252, 0.04) 0%,
-      rgba(251, 235, 255, 0.24) 100%
-    );
-    img {
-      width: 100%;
     }
-    border-radius: 20px;
-    // opacity: 0.76;  写上这个好像name这里有模糊感
-    position: relative;
-    padding: 100px 30px 10px;
-    .img {
-      width: 220px;
-      height: 220px;
-      margin: 36px auto 20px;
-    }
-    .title {
-      text-align: center;
-      height: 40px;
-      line-height: 40px;
-      font-size: 40px;
-      color: #fff;
-    }
-    .des {
-      font-size: 28px;
-      color: #fff;
-      line-height: 160%;
-      // padding-bottom: 400px;
+  .star {
+    
+    .container{
+      width: 630px;
+    
+      height: calc(100vh - 190px - 110px);
+      overflow: scroll;
+      word-wrap: break-word;
+      
+      margin-left: 60px;
+      background: linear-gradient(
+        360deg,
+        rgba(239, 222, 252, 0.04) 0%,
+        rgba(251, 235, 255, 0.24) 100%
+      );
       img {
         width: 100%;
+      }
+      border-radius: 20px;
+      // opacity: 0.76;  写上这个好像name这里有模糊感
+      position: relative;
+      padding: 100px 0px 10px;
+      .img {
+        width: 220px;
+        height: 220px;
+        margin: 36px auto 20px;
+      }
+      .title {
+        text-align: center;
+        height: 40px;
+        line-height: 40px;
+        font-size: 40px;
+        color: #fff;
+      }
+      .des {
+        font-size: 28px;
+        color: #fff;
+        line-height: 160%;
+        
+        // padding-bottom: 400px;
+        img {
+          width: 100%;
+        }
       }
     }
   }
@@ -273,7 +294,7 @@ export default {
 .star-cards {
   padding: 0 30px;
   // height: calc(100vh - 110px - 545px);
-  overflow-y: scroll;
+  // overflow-y: scroll;
   // background: #270E3B;
   .card-item {
     padding: 32px;
