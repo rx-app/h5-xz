@@ -76,7 +76,7 @@ let login = {
             let reurl='https://www.morninghappy.cn/mh-mall-web-api/auth/wx/receive_code';
             reurl = location.href
             reurl = localStorage.getItem('url')//'https://www.morninghappy.cn/xz/index.html#/wlogin'
-            console.log(reurl)
+            alert(reurl)
             // reurl= encodeURI(reurl)
             reurl= encodeURIComponent(reurl)
             // reurl = reurl.replace(/[/]/g, "%2f")
