@@ -2,27 +2,29 @@
   <div class="hello">
     <Header></Header>
     <div v-if="!isFinished" class="main">
-      <div class="rotate-section">
-        <div class="text-box"></div>
-        <div class="rotate-img"></div>
-      </div>
-      <div class="star-cards">
-        <div
-          v-for="(item,index) in cards"
-          :key="index"
-          :class="{on:activeIndex==index}"
-          @click="activeIndex=index"
-          class="card-item"
-        >
-          <div class="card-icon">
-            <img :src="item.icon" alt />
-          </div>
-          <div class="card-des">
-            <div class="star-name">{{item.title}}</div>
-          </div>
-          <div class="card-button" v-show="activeIndex == index">
-            <div class="button-icon"  @click="toDetail(index,item.id)"></div>
-            <!-- <div class="button-txt">做测试</div> -->
+      <div v-if="pageLoaded">
+        <div class="rotate-section">
+          <div class="text-box"></div>
+          <div class="rotate-img"></div>
+        </div>
+        <div class="star-cards">
+          <div
+            v-for="(item,index) in cards"
+            :key="index"
+            :class="{on:activeIndex==index}"
+            @click="activeIndex=index"
+            class="card-item"
+          >
+            <div class="card-icon">
+              <img :src="item.icon" alt />
+            </div>
+            <div class="card-des">
+              <div class="star-name">{{item.title}}</div>
+            </div>
+            <div class="card-button" v-show="activeIndex == index">
+              <div class="button-icon"  @click="toDetail(index,item.id)"></div>
+              <!-- <div class="button-txt">做测试</div> -->
+            </div>
           </div>
         </div>
       </div>
@@ -43,7 +45,8 @@ export default {
       pageSize: 100,
       cards: [],
       activeIndex: null,
-      isFinished: false
+      isFinished: false,
+      pageLoaded:false,
     };
   },
   methods: {
@@ -52,6 +55,7 @@ export default {
         params: { page_index: this.pageIndex, page_size: this.pageSize }
       });
       console.log(res.data);
+      this.pageLoaded = true
       if (res.code == 200) {
         this.cards = res.data.result;
       }
@@ -78,6 +82,7 @@ export default {
     //   }
     // }
     const res = await this.$http.get(`card/record/day`);
+    this.pageLoaded=true;
     if(res.data){
       this.isFinished = true;
     }
@@ -97,7 +102,7 @@ export default {
 <style  lang="scss"  scoped>
 .main {
   background: #270e3b;
-
+  height: 100vh;
   background: url("../assets/img/BG.jpg") no-repeat;
 }
 .rotate-section {

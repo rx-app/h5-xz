@@ -218,6 +218,7 @@ export default {
     
     .container{
       width: 630px;
+      
     
       height: calc(100vh - 190px - 110px);
       overflow: scroll;
@@ -252,7 +253,7 @@ export default {
         font-size: 28px;
         color: #fff;
         line-height: 160%;
-        
+        padding: 0 30px;
         // padding-bottom: 400px;
         img {
           width: 100%;
