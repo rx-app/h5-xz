@@ -34,7 +34,7 @@
     <van-popup position="bottom"  v-model="show">
       <div class="popup">
         <div class="top">
-          <!-- <div class="colse">关闭</div> -->
+          <div class="colse">长按下图保存分享</div>
           <!-- <a href=""></a> -->
           <!-- <a href="" class="download">下载</a> -->
           
