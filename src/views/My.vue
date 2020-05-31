@@ -24,13 +24,28 @@
           <div class="text">我的测试结果</div>
           <span class="iconfont icon-arr-right"></span>
         </div>
-        <div class="item">
+        <div @click="show=true" class="item">
           <i class="iconfont icon-duihua"></i>
           <div class="text">在线客服</div>
           <span class="iconfont icon-arr-right"></span>
         </div>
       </div>
     </div>
+    <van-popup position="bottom"  v-model="show">
+      <div class="popup">
+        <div class="top">
+          <!-- <div class="colse">关闭</div> -->
+          <!-- <a href=""></a> -->
+          <!-- <a href="" class="download">下载</a> -->
+          
+        </div>
+        <span @click="show=false" class="cha iconfont icon-cha"></span>
+        <div class="img-box">
+          <img class="share-img" src="../assets/img/qrcode.jpg" alt="">
+          
+        </div>
+      </div>
+    </van-popup>
     <Footer></Footer>
   </div>
 </template>
@@ -44,7 +59,8 @@ import { Toast } from "vant";
 export default {
   data() {
     return {
-      info: {}
+      info: {},
+      show:false,
     };
   },
   mixins:[checkToken],
@@ -112,6 +128,7 @@ export default {
 };
 </script>
 <style>
+
 /* .van-dialog__content{background: #321a4c;color:#fff}
 .van-dialog__confirm{background: #321a4c;color: #fff;}
 .van-dialog__footer{background: #321a4c;color: #fff;} */
@@ -144,6 +161,35 @@ export default {
 }
 </style>
 <style  lang="scss"  scoped>
+.img-box{
+  width: 100vw;
+  img{
+    width: 100vw;
+  }
+}
+.popup{
+  background:rgba(51,20,115,1);
+  .icon-cha{
+        color: #ADA7C1;
+        font-size: 40px;
+        position: absolute;
+        top:2px;
+        right: 32px;
+      }
+  .top{
+    background: #400e8d;
+    display: flex;
+    position: relative;
+    
+    div,a{
+      flex:1;
+      text-align: center;
+      font-size: 32px;
+      line-height: 64px;
+      color:#fff;
+    }
+  }
+}
 .main {
   background: #270e3b;
   height: calc(100vh - 110px);
