@@ -10,14 +10,20 @@ export default new Router({
       path: '/main',
       name: 'main',
       component: resolve => require(['@/views/Main'], resolve),
+      
       children:[
         {
           path: 'history/:id',
           name: 'mainhistory',
           props:true,
-          component: resolve => require(['@/views/CardRecords'], resolve)
+          component: resolve => require(['@/views/CardRecords'], resolve),
+          
         },
       ]
+    },
+    {
+      path:'/',
+      redirect:'/main',
     },
     {
       path: '/home',

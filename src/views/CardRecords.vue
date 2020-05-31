@@ -39,7 +39,7 @@
         </div>
         <span @click="show=false" class="cha iconfont icon-cha"></span>
         <div class="img-box">
-          <img class="share-img" :src="urlImg" alt="">
+          <img class="share-img" src="../assets/img/qrcode.jpg" alt="">
           
         </div>
       </div>
