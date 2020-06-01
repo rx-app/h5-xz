@@ -33,7 +33,7 @@ http.interceptors.response.use(res => {
       var reg = new RegExp("(^|&)" + 'code' + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
       var r = window.location.search.substr(1).match(reg);
       if(r&&r[2]){
-        alert('存在code')
+        // alert('存在code')
         return
       }
     //   var Days = 30; 
