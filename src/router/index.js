@@ -1,7 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 // import HelloWorld from '@/components/HelloWorld'
-
+const routerPush = Router.prototype.push
+Router.prototype.push = function push(location) {
+  return routerPush.call(this, location).catch(error=> error)
+}
 Vue.use(Router)
 
 export default new Router({
@@ -12,14 +15,15 @@ export default new Router({
       component: resolve => require(['@/views/Main'], resolve),
       
       children:[
-        {
-          path: 'history/:id',
-          name: 'mainhistory',
-          props:true,
-          component: resolve => require(['@/views/CardRecords'], resolve),
-          
-        },
+        
       ]
+    },
+    {
+      path: '/history/:id',
+      name: 'mainhistory',
+      props:true,
+      component: resolve => require(['@/views/CardRecords'], resolve),
+      
     },
     {
       path:'/',

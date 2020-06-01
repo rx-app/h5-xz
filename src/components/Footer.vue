@@ -1,6 +1,6 @@
 <template>
   <div class="xz-footer">
-    <router-link tag="div" :to="{name:'main'}"  class="icon ">
+    <router-link tag="div" :to="{name:'main'}" :class="{on}"  class="icon ">
       <i class="icon-main"></i>
       <div class="txt">每日运势</div>
     </router-link>
@@ -17,6 +17,7 @@
 
 <script>
 export default {
+  props:['on'],
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'

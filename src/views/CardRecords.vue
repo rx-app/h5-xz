@@ -28,7 +28,7 @@
         </div>
       </div>
     </div>
-    <Footer></Footer>
+    <Footer :on="true"></Footer>
      <van-popup position="bottom"  v-model="show">
       <div class="popup">
         <div class="top">
