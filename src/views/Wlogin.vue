@@ -239,7 +239,7 @@ export default {
         // let userInfo = await this.$http.get("auth/info")
         let res2 = await this.$http.get(`auth/info`)
         if(res2.code==200){
-          localStorage.setItem('nickname',res2.data.nickname || `手机用户${res.data.mobile.substr(-4)}`)
+          localStorage.setItem('nickname',res2.data.nickname || `手机用户${res2.data.mobile.substr(-4)}`)
           localStorage.setItem('gender',res2.data.gender)
           // localStorage.setItem('mobile',res.data.mobile)
           // localStorage.setItem('email',res.data.email)
