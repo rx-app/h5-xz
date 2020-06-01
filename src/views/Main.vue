@@ -147,6 +147,8 @@ export default {
   .card-item {
     padding: 32px;
     display: flex;
+    justify-content: center;
+    align-items: center;
     background: linear-gradient(
       360deg,
       rgba(0, 0, 0, 0.9) 0%,
@@ -174,7 +176,7 @@ export default {
     }
     .card-des {
       flex: 1;
-      height: 180px;
+      // height: 180px;
       margin-left: 32px;
       .star-name {
         font-size: 36px;
