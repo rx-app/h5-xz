@@ -11,7 +11,7 @@
           <img v-else src="../assets/img/avatar.png" alt="">
         </div>
         <div class="nickname">
-          塔罗少年
+          {{nickname}}
         </div>
       </div>
       
@@ -58,6 +58,9 @@ export default {
   computed:{
     avatar(){
       return localStorage.getItem('avatar') 
+    },
+    nickname(){
+      return localStorage.getItem('nickname') 
     },
   },
   data() {
