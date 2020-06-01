@@ -198,7 +198,7 @@ export default {
       }
     }
     .card-button {
-      margin-top: 65px;
+      // margin-top: 65px;
       .button-icon {
         width: 48px;
         height: 48px;
