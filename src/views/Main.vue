@@ -151,8 +151,8 @@ export default {
     align-items: center;
     background: linear-gradient(
       360deg,
-      rgba(0, 0, 0, 0.9) 0%,
-      rgba(0, 0, 0, 0.2) 100%
+      rgba(52, 0, 66, 0.9) 0%,
+      rgba(200, 1, 255, 0.2) 100%
     );
     border-radius: 16px;
     opacity: 0.8;
