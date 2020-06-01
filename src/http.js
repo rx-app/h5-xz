@@ -36,6 +36,8 @@ http.interceptors.response.use(res => {
         // alert('存在code')
         return
       }
+
+      
     //   var Days = 30; 
     // var exp = new Date(); 
     // exp.setTime(exp.getTime() + Days*24*60*60*1000); 
